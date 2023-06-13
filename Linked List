@@ -1,0 +1,106 @@
+linked list operartions
+insertation
+deletion
+reverseing
+displaying
+
+
+
+
+
+
+// code is here
+public class list {
+    node head;
+    static class node{
+        String data;
+        node next;
+
+        node(String data){
+            this.data=data;
+            this.next=null;
+        }
+    }
+    void insertFirst(String data){
+        node newnode=new node(data);
+        if(head==null){
+            head=newnode;
+            return;
+        }
+        newnode.next=head;
+        head=newnode;
+    }
+    void insertlast(String data){
+        node newnode=new node(data);
+        if(head==null){
+            head=newnode;
+            return;
+        }
+        node currnode=head;
+        while(currnode!=null){
+            currnode=currnode.next;
+        }
+        currnode.next=newnode;
+    }
+    void display(){
+        if(head==null){
+            System.out.println(" list is empty ");
+        }
+        node currnode=head;
+        while(currnode!=null){
+            System.out.println(currnode+"-->>");
+            currnode=currnode.next;
+        }
+    }
+    void deleatefirst(){
+        if(head==null){
+            System.out.println(" empty list ");
+            return;
+        }
+        head=head.next;
+    }
+    void deleatelast(){
+        if(head==null){
+            System.out.println(" empty list ");
+            return;
+        }
+        if(head.next==null){
+            System.out.println(" operation is not possible ");
+            return;
+        }
+        node seclast=head;
+        node lastnode=head.next;
+        while(lastnode!=null){
+            lastnode=lastnode.next;
+            seclast=seclast.next;
+        }
+        seclast.next=null;
+    }
+    void reverse(){
+        node previous=head;
+        node current=head.next;
+        while(current.next!=null){
+            node next=current.next;
+            current.next=previous;
+            //update
+            previous=current;
+            current=next;
+        }
+        head.next=null;
+        head=previous;
+    }
+    public static void main(String arg[]){
+        list obj1=new list();
+        obj1.insertFirst("R");
+        obj1.insertFirst("I");
+        obj1.insertFirst("T");
+        obj1.insertlast("I");
+        obj1.insertlast("K");
+        obj1.display();
+        obj1.deleatefirst();
+        obj1.deleatelast();
+        obj1.display();
+        obj1.reverse();
+    }
+}
+
