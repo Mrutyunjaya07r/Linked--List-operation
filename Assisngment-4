@@ -5,3 +5,272 @@ reverse of a list.
 sorting of list.
 count the number of element in list.
 And display the list.
+
+
+
+
+
+
+code is:  
+
+
+import java.util.Scanner;
+public class linkedlist3 {
+    static node head;
+   static class node{
+        int regdno;
+        double mark;
+        node next;
+
+        node(int regdno,double mark){
+            this.regdno=regdno;
+            this.mark=mark;
+            this.next=null;
+        }
+    }
+    public static node create(node head){
+        Scanner sc=new Scanner(System.in);
+        System.out.println(" enter the regd no ");
+        int regdno=sc.nextInt();
+        System.out.println(" enter the mark: ");
+        double mark=sc.nextDouble();
+        head=new node(regdno,mark);
+        return head;
+    }
+    public static node insertfirst(int regdno,double mark){
+       node newnode=new node(regdno,mark);
+       if(head==null){
+           head=newnode;
+       }
+       newnode.next=head;
+       head=newnode;
+       return head;
+    }
+    public static node insertlast(int regdno,double mark){
+       node newnode=new node(regdno,mark);
+       if(head==null){
+           head=newnode;
+       }
+       node current=head;
+       while(current!=null){
+           current=current.next;
+       }
+       current=newnode;
+       return head;
+    }
+    public static node deletelast(){
+       if(head==null){
+           System.out.println(" no deletion occur ");
+       }
+       if(head.next==null){
+           System.out.println(" no delection occur empty list ");
+       }
+       node second=head;
+       node lastnode=head.next;
+       while(lastnode!=null){
+           lastnode=lastnode.next;
+           second=second.next;
+       }
+       second=null;
+       return head;
+    }
+    public static node deletefirst(){
+       if(head==null){
+           System.out.println(" no delection occur ");
+       }
+       head=head.next;
+       return head;
+    }
+    public static void display(){
+       if(head==null){
+           System.out.println(" empty list ");
+       }
+       node current=head;
+       while(current!=null){
+           System.out.println(" the element are "+current.regdno+current.mark+"-->>");
+           current=current.next;
+       }
+    }
+    public static int count(){
+       int count=0;
+       node current=head;
+       while(current!=null){
+           count++;
+           current=current.next;
+       }
+       return count;
+    }
+    public static void serching(){
+       Scanner sc=new Scanner(System.in);
+       System.out.println(" enter the regd num: ");
+       int regdno=sc.nextInt();
+       node current=head;
+       boolean found=false;
+       while(current!=null){
+           if(current.regdno==regdno){
+               System.out.println(" enter the new mark ");
+               double mark=sc.nextDouble();
+               current.mark=mark;
+               found=true;
+           }
+           current=current.next;
+       }
+       try{
+           if(!found){
+               throw new Exception(" regd number is not found ");
+           }
+       }
+       catch(Exception e){
+           System.out.println(" the exception is: "+e);
+       }
+       
+
+    }
+    public static node reverse(){
+       node previous=head;
+       node current=head.next;
+       while(current!=null){
+           node next=current.next;
+           current.next=previous;
+           //update
+           previous=current;
+           current=next;
+       }
+       return previous;
+    }
+    public static void sort(){
+       node current=head;
+       node index=null;
+       while(current!=null){
+           index=current.next;
+           while(index!=null){
+               if(current.mark>index.mark){
+                   int tregd=current.regdno;
+                   double tmark=current.mark;
+                   current.regdno=current.next.regdno;
+                   current.mark=current.next.mark;
+                   current.next.regdno=tregd;
+                   current.next.mark=tmark;
+               }
+           }
+           index=index.next;
+       }
+       current=current.next;
+       
+    }
+
+    public static void main(String[] args){
+       
+    
+
+    
+    System.out.println("0: Exit");
+
+System.out.println("1: Creation");
+
+System.out.println("2: Display");
+
+System.out.println("3: Insert at the beginning"); System.out.println("4: Insert at the end");
+
+System.out.println("5: Insert at any position"); System.out.println("6: Delete from the beginning");
+
+System.out.println("7: Delete from the end");
+
+System.out.println("8: Delete from any position");
+
+System.out.println("9:Delete by student regd_no.");
+
+System.out.println("10: Search and update mark"); System.out.println("11: Sort the list");
+
+System.out.println("12: Count the number of nodes ");
+
+System.out.println("13: Reverse the Linked list");
+
+//u can use these inside loop..but here in the output it 11 be big so.)
+
+while (true){
+    
+Scanner sc=new Scanner(System.in);
+
+        System.out.print("\nEnter your choice: ");
+
+    int choice=sc.nextInt();
+
+System.out.println();
+
+switch (choice){
+
+            case 0:
+
+            System.out.println("Thank you... In Have a great day..");
+
+System.exit(0);
+
+case 1:
+
+    head =create(head);
+
+break;
+
+case 2:
+
+    display();
+
+break;
+
+case 3:
+
+    head= insertfirst(22,99);
+
+break;
+
+case 4:
+
+    head =insertlast(77,77);
+
+break;
+
+
+
+case 5:
+
+    head = deletefirst();
+
+break;
+
+case 7:
+
+    head = deletelast();
+
+break;
+
+case 8:
+
+     serching();
+
+break;
+
+case 9:
+
+    sort();
+    break;
+
+case 10: 
+    head=reverse();
+
+break;
+
+    case 11:
+        System.out.println(count());
+
+    default:
+
+            System.out.println("Wrong choice!...please enter a valid choice...");
+
+            break;
+
+
+    }
+}
+    }
+}
