@@ -1,0 +1,74 @@
+OPERATION ARE:
+POP FUNCATION
+PUSH FUNCATION
+DISPLAY FUNCATION
+UNDERFLOW STATEMENT
+OVER FLOW STATEMENT
+
+
+
+// CODE IS BELOW//
+import java.util.Scanner;
+public class stackarray {
+    int top=-1;
+    int n=6;
+    int a[]=new int[n];
+
+    void push(){
+        Scanner sc=new Scanner(System.in);
+        if(top==(n-1)){  //OVER FLOW STATEMENT
+            System.out.println(" overflow ");
+        }
+        else{
+            System.out.println(" enter the element: ");
+            int i=sc.nextInt();
+            top=top+1;
+            a[top]=i;
+            System.out.println(" inserted successfully ");
+        }
+    }
+    void pop(){
+        if(top==-1){
+            System.out.println(" underflow ");
+        }
+        else{
+            top=top-1; // UNDER FLOW STATEMENT
+            System.out.println(" deleted sucessfully ");
+        }
+    }
+    void display(){
+        System.out.println(" display the elements: ");
+        for(int j=top;j>=0;j--){
+            System.out.println(a[j]);
+        }
+    }
+    public static void main(String arg[]){
+        int choice;
+        int l;
+        Scanner sc=new Scanner(System.in);
+        stackarray s=new stackarray();
+        do{
+            System.out.println(" press 1 for push ");
+            System.out.println(" press 2 for pop ");
+            System.out.println(" press 3 for display ");
+            System.out.println(" enter your choice ");
+            choice=sc.nextInt();
+            switch(choice){
+                case 1:
+                    s.push();
+                    break;
+                case 2:
+                    s.pop();
+                    break;
+                case 3:
+                    s.display();
+                    break;
+
+            }
+            System.out.println(" enter 0 for main menu ");
+            System.out.println(" enter any key to out of funcation ");
+            l=sc.nextInt();
+        }while(l==0);
+        System.out.println(" EXIT successfully ");
+    }
+}
