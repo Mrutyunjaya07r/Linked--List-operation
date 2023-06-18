@@ -1,0 +1,88 @@
+queue using linked list.
+operation are using:
+enqueue
+dequeue
+display
+
+
+code is given below
+
+import java.util.Scanner;
+public class queuelinkedlist {
+    node f=null;
+    node r=null;
+    class node{
+        int data;
+        node next;
+
+        node(int data){
+            this.data=data;
+            this.next=null;
+        }
+    }
+    public void enqueue(){
+        Scanner sc= new Scanner(System.in);
+        System.out.println(" enter the element ");
+        int data = sc.nextInt();
+        node newnode=new node(data);
+        if(f==null){
+            f=newnode;
+            r=newnode;
+        }
+        else{
+            r.next=newnode;
+            r=newnode;
+        }
+    }
+    public void dequeue(){
+        if(f==null){
+            System.out.println(" under flow ");
+        }
+        else {
+            f = f.next;
+        }
+    }
+    public void display(){
+        node temp=f;
+        while(temp!=null){
+            System.out.println(temp.data);
+            temp=temp.next;
+        }
+    }
+    public static void main(String arg[]){
+        int choice;
+        int l;
+        Scanner sc=new Scanner(System.in);
+        queuelinkedlist q2=new queuelinkedlist();
+        do{
+            System.out.println(" enter 1 for enqueue ");
+            System.out.println(" enter 2 for dequeue ");
+            System.out.println(" enter 3 for display ");
+            System.out.println(" enter your choice ");
+            choice = sc.nextInt();
+            switch(choice){
+                case 1:
+                    q2.enqueue();
+                    break;
+                case 2:
+                    q2.dequeue();
+                    break;
+                case 3:
+                    q2.display();
+                    break;
+
+            }
+            System.out.println(" enter 0 for main menu ");
+            System.out.println(" enter any other key to break loop ");
+            l=sc.nextInt();
+
+
+
+        }while(l==0);
+        System.out.println(" exit successfully ");
+    }
+
+
+
+}
+
