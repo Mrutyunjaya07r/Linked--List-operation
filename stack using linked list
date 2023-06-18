@@ -1,0 +1,88 @@
+stack using linked list.
+some operation given below: 
+push operation
+pop operation
+display operation
+
+
+//code is given below
+
+import java.util.Scanner;
+public class stacklinkedlist {
+    node top;
+    static class node {
+        int data;
+        node next;
+
+        node(int data) {
+            this.data = data;
+            this.next = null;
+        }
+
+
+    }
+
+     void push() {
+        System.out.println(" enter the elements of list: ");
+        Scanner sc = new Scanner(System.in);
+        int data = sc.nextInt();
+        node newnode = new node(data);
+        if (top == null) {
+            top = newnode;
+        }
+        else{
+            newnode.next=top;
+            top=newnode;
+        }
+    }
+     void pop(){
+        if(top==null){
+            System.out.println(" stack is empty ");
+        }
+        else{
+            top=top.next;
+        }
+    }
+    void display(){
+        node current=top;
+        while(current!=null){
+            System.out.println(current.data+"-->>");
+            current=current.next;
+        }
+
+    }
+    public static void main(String arg[]){
+        int choice;
+        int l;
+        Scanner sc=new Scanner(System.in);
+        stacklinkedlist s1=new stacklinkedlist();
+        do{
+            System.out.println(" enter 1 for push ");
+            System.out.println(" enter 2 for pop ");
+            System.out.println(" enter 3 for display ");
+            System.out.println(" enter your choice ");
+            choice = sc.nextInt();
+            switch(choice){
+                case 1:
+                    s1.push();
+                    break;
+                case 2:
+                    s1.pop();
+                    break;
+                case 3:
+                    s1.display();
+                    break;
+
+            }
+            System.out.println(" enter 0 for main menu ");
+            System.out.println(" enter any other key to break loop ");
+            l=sc.nextInt();
+
+
+
+        }while(l==0);
+    }
+
+
+}
+
